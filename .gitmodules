@@ -1,0 +1,10 @@
+[submodule "zkWasm"]
+	path = zkWasm
+	url = https://github.com/DelphinusLab/zkWasm.git
+[submodule "risc0"]
+	path = risc0
+	url = https://github.com/risc0/risc0.git
+[submodule "go"]
+	path = go
+	url = https://github.com/ethstorage/go.git
+	branch = zkGo
