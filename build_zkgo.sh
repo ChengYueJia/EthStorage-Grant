@@ -1,42 +1,42 @@
 #!/bin/bash
 
 PWD=${PWD}
-GOROOT=${PWD}/go
 
-echo $PWD
-echo $GOROOT
+GOROOT=${PWD}/go
+#ZKGO=${PWD}/bin/zkgo #can't move it out.
+ZKGO=$GOROOT/bin/zkgo
+
+FIB_PATH=$GOROOT/zkgo_examples/fib/fib.go
+FIB_WASM=${PWD}/data/fib.wasm
+
 
 # 1. build zkgo
-echo "==Build zkgo"
-cd $GOROOT/src
-git checkout zkGo # try to remote it.
-./all.bash
-mv $GOROOT/bin/go $GOROOT/bin/zkgo # The zkgo binary: go/bin/zkgo
-
-## TODO Try to reuse the built zkgo binary file
-#export PS4="\$LINENO: "
-#set -xv
-#FILE1="${@:$OPTIND:1}"         # Line 6
-#if [ ! -e "$FILE1" ]           # Line 7
-#then
-#    echo "requested file doesn't exist" >&2
-#    exit 1
-#else
-#    echo "Found File $FILE1"   # Line 12
-#fi
-
-
+echo "==build zkgo"
+if [ -f "$ZKGO" ]; then
+    echo "==$ZKGO exists."
+else
+    echo "$ZKGO does not exist."
+    echo "==Build zkgo"
+    cd $GOROOT/src
+    git checkout zkGo # try to remote it.
+    ./all.bash
+    mv $GOROOT/bin/go $ZKGO # The zkgo binary: go/bin/zkgo
+fi
 
 # 2. export zkgo's path
 echo "==Export zkgo to path"
-export GOPATH=$GOROOT/
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
-# test zkgo
-which zkgo
+./export_path.sh
+which zkgo # test zkgo
 
 # 3. compile `fib_go.go` into `fib.wasm`
-echo "==Compile fib into wasm with zkgo"
-FIB_PATH=$GOROOT/zkgo_examples/fib
+echo "==Compile fib_go into fib.wasm by zkgo"
+if [ -f "$FIB_WASM" ]; then
+    echo "==$FIB_WASM exists."
+else
+  echo "==Compile fib into wasm with zkgo"
+  echo $GOROOT
+  cd $GOROOT
+  GOOS=wasip1 GOARCH=wasm $ZKGO build -gcflags=all=-d=softfloat -o $FIB_WASM $FIB_PATH
+fi
 
-GOOS=wasip1 GOARCH=wasm zkgo build -gcflags=all=-d=softfloat -o $FIB_PATH/fib.wasm $FIB_PATH/fib.go
+echo "Finish build_zkgo"
