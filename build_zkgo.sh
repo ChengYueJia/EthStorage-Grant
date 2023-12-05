@@ -11,6 +11,7 @@ FIB_WASM=${PWD}/data/fib.wasm
 
 
 # 1. build zkgo
+echo "==build zkgo"
 if [ -f "$ZKGO" ]; then
     echo "==$ZKGO exists."
 else
@@ -28,6 +29,7 @@ echo "==Export zkgo to path"
 which zkgo # test zkgo
 
 # 3. compile `fib_go.go` into `fib.wasm`
+echo "==Compile fib_go into fib.wasm by zkgo"
 if [ -f "$FIB_WASM" ]; then
     echo "==$FIB_WASM exists."
 else

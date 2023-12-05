@@ -16,5 +16,5 @@ Cargo.lock
 .idea
 .vscode
 
-# bin
-# data
+bin
+data

@@ -6,6 +6,9 @@ help: ## Display this help screen
 pull: ## Pull all the recursive submodule
 	@git submodule update --init --recursive
 
+prepare: ## libs and tools on ubuntu
+	@sudo apt install libssl-dev
+	@sudo apt install pkg-config
 
 
 path: ## Export bin to env path.
