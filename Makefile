@@ -8,6 +8,8 @@ pull: ## Pull all the recursive submodule
 
 
 
+path: ## Export bin to env path.
+	@bash export_path.sh
 
 
 

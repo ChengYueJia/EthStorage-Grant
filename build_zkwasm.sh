@@ -5,6 +5,9 @@ ZKWASM=${PWD}/zkWasm/
 ZKWASMCLI=${PWD}/zkWasm/crates/cli/
 delphinus_cli=$ZKWASM/target/release/delphinus-cli
 
+# data
+FIB_WASM=${PWD}/data/fib.wasm
+
 
 # 1. pull zkwasm
 echo "==Pull wasmi"
