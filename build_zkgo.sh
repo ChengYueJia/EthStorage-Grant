@@ -6,7 +6,8 @@ GOROOT=${PWD}/go
 #ZKGO=${PWD}/bin/zkgo #can't move it out.
 ZKGO=$GOROOT/bin/zkgo
 
-FIB_PATH=$GOROOT/zkgo_examples/fib/fib.go
+FIB_PATH=$GOROOT/zkgo_examples/fib/fib_zkgo.go
+#FIB_PATH=$GOROOT/data/fib_zkgo.go
 FIB_WASM=${PWD}/data/fib_with_input.wasm
 
 GEN_WITNESS=$GOROOT/zkgo_examples/fib/write_witness.py
@@ -43,6 +44,7 @@ else
   cd $GOROOT
   GOOS=wasip1 GOARCH=wasm $ZKGO build -gcflags=all=-d=softfloat -o $FIB_WASM $FIB_PATH
 fi
+
 echo "==Compile fib_go into fib.wasm by zkgo"
 if [ -f "$FIB_WASM" ]; then
     echo "==$FIB_WASM exists."
