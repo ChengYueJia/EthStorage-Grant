@@ -6,6 +6,13 @@ help: ## Display this help screen
 pull: ## Pull all the recursive submodule
 	@git submodule update --init --recursive
 
+clean_data: ## clean the cached data
+	@rm data/*
+
+clean_bin: ## clean the cached bin
+	@rm bin/*
+	@rm go/bin/*
+
 prepare: ## libs and tools on ubuntu
 	@sudo apt install libssl-dev
 	@sudo apt install pkg-config
