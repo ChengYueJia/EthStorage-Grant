@@ -10,8 +10,8 @@ clean_data: ## clean the cached data
 	@rm data/*
 
 clean_bin: ## clean the cached bin
-	@rm bin/*
 	@rm go/bin/*
+	@rm bin/*
 
 prepare: ## libs and tools on ubuntu
 	@sudo apt install libssl-dev

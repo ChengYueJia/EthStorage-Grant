@@ -16,7 +16,6 @@ FIB_INPUT=${PWD}/data/input.dat
 WASMI_EXEC_NODE=$GOROOT/zkgo_examples/zkWasm-emulator/wasi/wasi_exec_node.js
 
 # 1. build zkgo
-echo "==build zkgo"
 if [ -f "$ZKGO" ]; then
     echo "==$ZKGO exists."
 else
@@ -24,7 +23,7 @@ else
     echo "==Build zkgo"
     cd $GOROOT/src
     git fetch
-    git checkout zkGo # try to remote it.
+    git checkout feat/grand1 # try to remote it.
     ./all.bash
     mv $GOROOT/bin/go $ZKGO # The zkgo binary: go/bin/zkgo
 fi
