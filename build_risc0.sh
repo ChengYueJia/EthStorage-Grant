@@ -3,7 +3,8 @@
 PWD=${PWD}
 RISC0=${PWD}/risc0/
 ZKWASM=${PWD}/risc0/examples/wasm
-ZKWASMCLI=${PWD}/bin/risc0
+#ZKWASMCLI=${PWD}/bin/risc0
+ZKWASMCLI=${PWD}/risc0/examples/target/release/wasm
 #delphinus_cli=$ZKWASM/target/release/delphinus-cli
 #delphinus_cli=${PWD}/bin/delphinus-cli #can't move it out.
 
@@ -34,11 +35,11 @@ else
     echo "==$ZKWASMCLI does not exist."
     cargo clean
     cargo build --release
-    mv ../target/release/wasm $ZKWASMCLI
+#    mv ../target/release/wasm $ZKWASMCLI
 fi
 
 
-bash $ZKWASMCLI
+./$ZKWASMCLI
 
 
 # 2. run with wasmi
