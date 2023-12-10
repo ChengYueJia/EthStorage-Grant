@@ -16,8 +16,8 @@ Cargo.lock
 .idea
 .vscode
 
-bin/*
-data/*
+#bin/*
+#data/*
 go/*
 risc0/*
 zkWasm/*
