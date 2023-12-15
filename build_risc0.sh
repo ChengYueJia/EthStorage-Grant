@@ -4,10 +4,12 @@ PWD=${PWD}
 RISC0=${PWD}/risc0/
 ZKWASM=${PWD}/risc0/examples/wasm
 #ZKWASMCLI=${PWD}/bin/risc0
-ZKWASMCLI=${PWD}/risc0/examples/target/release/wasm
+#ZKWASMCLI=${PWD}/risc0/examples/target/release/wasm
 #delphinus_cli=$ZKWASM/target/release/delphinus-cli
 #delphinus_cli=${PWD}/bin/delphinus-cli #can't move it out.
 
+cd $RISC0
+git reset --hard v0.19.1
 
 cd $ZKWASM
 
@@ -29,17 +31,20 @@ fi
 
 # 2. build and run
 echo "==build risc0"
-if [ -f "$ZKWASMCLI" ]; then
-    echo "==$ZKWASMCLI exists."
-else
-    echo "==$ZKWASMCLI does not exist."
-    cargo clean
-    cargo build --release
-#    mv ../target/release/wasm $ZKWASMCLI
-fi
+RUST_LOG=info cargo run --release
 
 
-./$ZKWASMCLI
+
+#if [ -f "$ZKWASMCLI" ]; then
+#    echo "==$ZKWASMCLI exists."
+#else
+#    echo "==$ZKWASMCLI does not exist."
+#    cargo clean
+#    cargo build --release
+##    mv ../target/release/wasm $ZKWASMCLI
+#fi
+#
+#./$ZKWASMCLI
 
 
 # 2. run with wasmi
