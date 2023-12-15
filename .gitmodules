@@ -1,9 +1,11 @@
 [submodule "zkWasm"]
 	path = zkWasm
-	url = https://github.com/DelphinusLab/zkWasm.git
+	url = https://github.com/ChengYueJia/zkWasm.git
+	branch = feat/grand1
 [submodule "risc0"]
 	path = risc0
-	url = https://github.com/risc0/risc0.git
+	url = https://github.com/ChengYueJia/risc0.git
+	branch = feat/grand1
 [submodule "go"]
 	path = go
 	url = https://github.com/ChengYueJia/go.git
