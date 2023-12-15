@@ -9,7 +9,7 @@ ZKWASM=${PWD}/risc0/examples/wasm
 #delphinus_cli=${PWD}/bin/delphinus-cli #can't move it out.
 
 cd $RISC0
-git reset --hard v0.19.1
+#git reset --hard v0.19.1
 
 cd $ZKWASM
 

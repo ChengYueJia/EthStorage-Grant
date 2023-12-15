@@ -1,13 +1,13 @@
 [submodule "zkWasm"]
 	path = zkWasm
 	url = https://github.com/ChengYueJia/zkWasm.git
-	branch = feat/grand1
+	branch = feat/eths-grant-1
 [submodule "risc0"]
 	path = risc0
 	url = https://github.com/ChengYueJia/risc0.git
-	branch = feat/grand1
+	branch = feat/eths-grant-1
 [submodule "go"]
 	path = go
 	url = https://github.com/ChengYueJia/go.git
-	branch = feat/grand1
+	branch = feat/eths-grant-1
 
