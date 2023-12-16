@@ -64,7 +64,7 @@ else
 
   # Require node > 20
   echo "==Compile witness into wasm"
-  node $WASMI_EXEC_NODE $FIB_WASM $FIB_INPUT
+  time node $WASMI_EXEC_NODE $FIB_WASM $FIB_INPUT
 fi
 
 echo "Finish build_zkgo"

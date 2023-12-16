@@ -7,6 +7,7 @@ ZKWASM=${PWD}/risc0/examples/wasm
 #ZKWASMCLI=${PWD}/risc0/examples/target/release/wasm
 #delphinus_cli=$ZKWASM/target/release/delphinus-cli
 #delphinus_cli=${PWD}/bin/delphinus-cli #can't move it out.
+FIB_WASM=${PWD}/data/fib_with_input.wasm
 
 cd $RISC0
 #git reset --hard v0.19.1
@@ -31,7 +32,7 @@ fi
 
 # 2. build and run
 echo "==build risc0"
-RUST_LOG=info cargo run --release
+time RUST_LOG=info cargo run --release -- -w $FIB_WASM
 
 
 
