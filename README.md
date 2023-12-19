@@ -2,21 +2,23 @@
 
 ## Steps
 
-1. generate `fib.wasm` by zkGo
+### generate `fib.wasm` by zkGo
 
 * [ ]  build the execute binary `zkGo`
 * [ ]  compile `fib_go.go` with `zkGo` into `fib.wasm`
 
-2. timing profile
+* timing profile
 
 
-| Task        | zkWasm | rics0 | Desc                                                                                                       |
-| ----------- | ------ | ----- |------------------------------------------------------------------------------------------------------------|
-| dry_run     | TODO   | TODO  | execute 'fib.wasm' by the inner`wasm runtime`<br />. To see the wasm witness generate time.                |
-| dry_run     | TODO   | TODO  | Risc0, Host function implement, and compile it's risc0 and wasm version.  go_wasm/go_wasm_risc0/rust_risc0 |
-| gen_witness | TODO   | TODO  | generate the witness with`fib.wasm`                                                                        |
-| gen_proof   | TODO   | TODO  | generate the proof                                                                                         |
+| Task/Time(s) | zkWasm(CPU) | zkWasm(GPU) | rics0  | Desc                                           |
+|--------------|-------------|-------------|--------|------------------------------------------------|
+| dry_run      | 1.378       | 0.002       | TODO   | execute 'fib.wasm' by the inner`wasmi runtime` |
+| gen_witness  | TODO        |             | TODO   | generate the witness with`fib.wasm`            |
+| gen_proof    | TODO        |             | TODO   | generate the proof                             |
 
+
+### generate `fib.risc` by zkGo
+> TODO
 
 
 
@@ -51,7 +53,7 @@ make pull
 
 * profile rics0
 ```bash
-
+# TODO
 
 ```
 
