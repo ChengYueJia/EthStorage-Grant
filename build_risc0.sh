@@ -15,7 +15,7 @@ cd $RISC0
 cd $ZKWASM
 
 # 1. check and install risc0 toolchain
-echo "==install risc0 toolchain"
+echo -e "\n==install risc0 toolchain"
 
 result=$(rustup toolchain list --verbose | grep risc0)
 #echo $result
@@ -31,13 +31,17 @@ fi
 
 
 # 2. build and run
-echo "==build risc0"
+echo -e "\n==build risc0"
 time RUST_LOG=info cargo run --release -- -w $FIB_WASM
-echo ""
 
-echo "==build risc0_cuda"
-time RUST_LOG=info cargo run --release --features cuda -- -w $FIB_WASM
-echo ""
+# check cuda
+echo -e "\n==build risc0_cuda"
+if command -v nvcc >/dev/null 2>&1; then
+    echo "nvcc installed"
+    time RUST_LOG=info cargo run --release --features cuda -- -w $FIB_WASM
+else
+    echo "nvcc not installed"
+fi
 
 
 #if [ -f "$ZKWASMCLI" ]; then

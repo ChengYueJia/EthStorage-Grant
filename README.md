@@ -10,11 +10,12 @@
 * timing profile
 
 
-| Task/Time(s) | zkWasm(CPU) | zkWasm(GPU) | rics0  | Desc                                           |
-|--------------|-------------|-------------|--------|------------------------------------------------|
-| dry_run      | 1.378       | 0.002       | TODO   | execute 'fib.wasm' by the inner`wasmi runtime` |
-| gen_witness  | TODO        |             | TODO   | generate the witness with`fib.wasm`            |
-| gen_proof    | TODO        |             | TODO   | generate the proof                             |
+| Task/Time(s) | zkWasm(CPU) | zkWasm(GPU) | rics0(wasm) | rics0(riscv) | Desc                                           |
+|--------------|-------------|-------------|-------------|--------------|------------------------------------------------|
+| dry_run      | 1.378       | 0.002       | TODO        | TODO         | execute 'fib.wasm' by the inner`wasmi runtime` |
+| gen_witness  | -           | -           | -           | -            | generate the witness with`fib.wasm`            |
+| gen_proof    | -           | -           | TODO(rust)  | TODO         | generate the proof                             |
+
 
 
 ### generate `fib.risc` by zkGo
