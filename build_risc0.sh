@@ -33,7 +33,11 @@ fi
 # 2. build and run
 echo "==build risc0"
 time RUST_LOG=info cargo run --release -- -w $FIB_WASM
+echo ""
 
+echo "==build risc0_cuda"
+time RUST_LOG=info cargo run --release --features cuda -- -w $FIB_WASM
+echo ""
 
 
 #if [ -f "$ZKWASMCLI" ]; then
