@@ -32,13 +32,13 @@ fi
 
 # 2. build and run
 echo -e "\n==build risc0"
-time RUST_LOG=info cargo run --release -- -w $FIB_WASM
+time RUST_BACKTRACE=1,RUST_LOG=info cargo run --release -- -w $FIB_WASM
 
 # check cuda
 echo -e "\n==build risc0_cuda"
 if command -v nvcc >/dev/null 2>&1; then
     echo "nvcc installed"
-    time RUST_LOG=info cargo run --release --features cuda -- -w $FIB_WASM
+    time RUST_LOG=debug cargo run --release --features cuda -- -w $FIB_WASM
 else
     echo "nvcc not installed"
 fi
