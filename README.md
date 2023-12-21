@@ -12,7 +12,7 @@
 
 | Task/Time(s) | zkWasm(CPU) | zkWasm(GPU) | rics0(wasm) | rics0(riscv) | Desc                                           |
 |--------------|-------------|-------------|-------------|--------------|------------------------------------------------|
-| dry_run      | 1.378       | 0.002       | TODO        | TODO         | execute 'fib.wasm' by the inner`wasmi runtime` |
+| dry_run      | 1.378       | 1.257       | TODO        | TODO         | execute 'fib.wasm' by the inner`wasmi runtime` |
 | gen_witness  | -           | -           | -           | -            | generate the witness with`fib.wasm`            |
 | gen_proof    | -           | -           | TODO(rust)  | TODO         | generate the proof                             |
 
