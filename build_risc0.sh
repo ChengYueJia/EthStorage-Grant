@@ -32,6 +32,9 @@ fi
 
 # 2. build and run
 echo -e "\n==build risc0"
+git checkout feat/eths-grant-1
+git pull
+
 time RUST_BACKTRACE=1,RUST_LOG=info cargo run --release -- -w $FIB_WASM
 
 # check cuda
