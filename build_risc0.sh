@@ -2,17 +2,24 @@
 
 PWD=${PWD}
 RISC0=${PWD}/risc0/
-ZKWASM=${PWD}/risc0/examples/wasm
-#ZKWASMCLI=${PWD}/bin/risc0
-#ZKWASMCLI=${PWD}/risc0/examples/target/release/wasm
-#delphinus_cli=$ZKWASM/target/release/delphinus-cli
-#delphinus_cli=${PWD}/bin/delphinus-cli #can't move it out.
-FIB_WASM=${PWD}/data/fib_with_input.wasm
+
+# a. zkgo's fib wasm.
+ZKWASM=${PWD}/risc0/examples/zkgo_wasm
+ZKGO_FIB_WASM=${PWD}/data/fib_with_input.wasm
+
+# b. raw, rust fib wasm
+RAW_FIB_WASM=${PWD}/risc0/examples/wasm
+
+
+# TODO
+# c. fib riscv
+RAW_FIB_RISCV=${PWD}/risc0/examples/fibonacci
+
+
 
 cd $RISC0
 #git reset --hard v0.19.1
 
-cd $ZKWASM
 
 # 1. check and install risc0 toolchain
 echo -e "\n==install risc0 toolchain"
@@ -30,39 +37,65 @@ else
 fi
 
 
-# 2. build and run
-echo -e "\n==build risc0"
+# 2. run RAW_FIB_WASM
+echo -e "\n run RAW_FIB_WASM"
+cd $RAW_FIB_WASM
+cargo clean
+
+# 2.1 build and run
+echo -e "\n==run raw_fib_wasm"
 git checkout feat/eths-grant-1
 git pull
 
-time RUST_BACKTRACE=1,RUST_LOG=info cargo run --release -- -w $FIB_WASM
+time RUST_LOG=info cargo run --release
 
-# check cuda
-echo -e "\n==build risc0_cuda"
+# 2.2 build and run cuda
+echo -e "\n==build raw_fib_wasm_cuda"
 if command -v nvcc >/dev/null 2>&1; then
     echo "nvcc installed"
-    time RUST_LOG=debug cargo run --release --features cuda -- -w $FIB_WASM
+    time RUST_LOG=info cargo run --release --features cuda
 else
     echo "nvcc not installed"
 fi
 
 
-#if [ -f "$ZKWASMCLI" ]; then
-#    echo "==$ZKWASMCLI exists."
-#else
-#    echo "==$ZKWASMCLI does not exist."
-#    cargo clean
-#    cargo build --release
-##    mv ../target/release/wasm $ZKWASMCLI
-#fi
+
+## zkgo_fib_wasm
+#cd $ZKWASM
+## 3. build and run
+#echo -e "\n==run zkgo_fib_wasm_cuda"
+#git checkout feat/eths-grant-1
+#git pull
 #
-#./$ZKWASMCLI
+#time RUST_BACKTRACE=1,RUST_LOG=info cargo run --release -- -w $ZKGO_FIB_WASM
+#
+## check cuda
+#echo -e "\n==build zkgo_fib_wasm"
+#if command -v nvcc >/dev/null 2>&1; then
+#    echo "nvcc installed"
+#    time RUST_LOG=debug cargo run --release --features cuda -- -w $ZKGO_FIB_WASM
+#else
+#    echo "nvcc not installed"
+#fi
 
 
-# 2. run with wasmi
 
-# 3. generate witness
+# 4. run RAW_FIB_RISCV
+echo -e "\n run RAW_FIB_RISCV"
+cd $RAW_FIB_RISCV
+cargo clean
+# 4.1 build and run
+echo -e "\n==run raw_fib_risc"
+git checkout feat/eths-grant-1
+git pull
 
-# 4. generate proof
+time RUST_LOG=info cargo run --release
 
-echo "Finish build_risc0"
+# 4.2 build and run cuda
+echo -e "\n==build raw_fib_risc_cuda"
+if command -v nvcc >/dev/null 2>&1; then
+    echo "nvcc installed"
+    time RUST_LOG=info cargo run --release --features cuda
+else
+    echo "nvcc not installed"
+fi

@@ -68,7 +68,6 @@ else
 
   # Require node > 20
   echo -e "==Compile witness into wasm"
-  npm i
   time node $WASMI_EXEC_NODE $FIB_WASM $FIB_INPUT
 fi
 
