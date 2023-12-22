@@ -1,20 +1,63 @@
 # EthStorage-Grant
 
-## Steps
-
-### generate `fib.wasm` by zkGo
-
-* [ ]  build the execute binary `zkGo`
-* [ ]  compile `fib_go.go` with `zkGo` into `fib.wasm`
-
-* timing profile
 
 
-| Task/Time(s) | zkWasm(CPU) | zkWasm(GPU) | rics0(wasm) | rics0(riscv) | Desc                                           |
-|--------------|-------------|-------------|-------------|--------------|------------------------------------------------|
-| dry_run      | 1.378       | 1.257       | TODO        | TODO         | execute 'fib.wasm' by the inner`wasmi runtime` |
-| gen_witness  | -           | -           | -           | -            | generate the witness with`fib.wasm`            |
-| gen_proof    | -           | -           | TODO(rust)  | TODO         | generate the proof                             |
+## Profiler Features
+* dry_run
+  execute 'fib.wasm' by the inner`wasmi runtime`
+
+* gen_witness
+  generate the witness with`fib.wasm`
+
+* gen_proof
+  generate the proof
+
+### timing profile
+
+* N=1000
+
+| Time(s)              | dry_run | gen_witness | gen_proof | 
+|----------------------|---------|-------------|-----------|
+| zkWasm(CPU)          | 1.301   | -           | -         |             
+| zkWasm(GPU)          | 1.231   | -           | -         | 
+| rics0(zkgo/wasm)     | -       | -           | -         | 
+| rics0(zkgo/wasm) GPU | -       | -           | -         | 
+| rics0(raw_wasm)      | 0.069   | -           | 112.329   |             
+| rics0(raw_wasm) GPU  | -       | -           | 16.808    |
+| rics0(riscv)         |         |             | -         |             
+| rics0(riscv) GPU     | -       | -           | -         | 
+
+
+
+
+
+
+* N=10000
+
+| Time(s)              | dry_run | gen_witness | gen_proof | 
+|----------------------|---------|-------------|-----------|
+| zkWasm(CPU)          | -       | -           | -         |             
+| zkWasm(GPU)          | -       | -           | -         | 
+| rics0(zkgo/wasm)     | -       | -           | -         | 
+| rics0(zkgo/wasm) GPU | -       | -           | -         | 
+| rics0(raw_wasm)      | -       | -           | -         |                 
+| rics0(raw_wasm) GPU  | -       | -           | -         |    
+| rics0(riscv)         |         |             | -         |             
+| rics0(riscv) GPU     | -       | -           | -         | 
+
+
+* N=100000
+
+| Time(s)              | dry_run | gen_witness | gen_proof | 
+|----------------------|---------|-------------|-----------|
+| zkWasm(CPU)          | 1.378   | -           | -         |             
+| zkWasm(GPU)          | 1.257   | -           | -         | 
+| rics0(zkgo/wasm)     | -       | -           | -         | 
+| rics0(zkgo/wasm) GPU | -       | -           | -         | 
+| rics0(raw_wasm)      | -       | -           | -         |             
+| rics0(raw_wasm) GPU  | -       | -           | -         |
+| rics0(riscv)         |         |             | -         |             
+| rics0(riscv) GPU     | -       | -           | -         | 
 
 
 

@@ -21,3 +21,6 @@ data/*
 go/*
 risc0/*
 zkWasm/*
+
+
+log/

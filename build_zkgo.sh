@@ -46,17 +46,6 @@ else
   echo -e "compiled \n"
 fi
 
-#echo "==Compile fib into riscv with zkgo"
-#if [ -f "$FIB_RISCV" ]; then
-#    echo -e "==$FIB_RISCV exists. \n"
-#else
-#  echo $GOROOT
-#  cd $GOROOT
-##  TODO: need to update GOOS with GOARCH.
-#  GOOS=linux GOARCH=riscv64 $ZKGO build -gcflags=all=-d=softfloat -o $FIB_RISCV $FIB_PATH
-#  echo -e "compiled \n"
-#fi
-
 # 4. compile gen witness
 echo "==Compile gen witness"
 if [ -f "$FIB_INPUT" ]; then
@@ -70,5 +59,17 @@ else
   echo -e "==Compile witness into wasm"
   time node $WASMI_EXEC_NODE $FIB_WASM $FIB_INPUT
 fi
+
+#echo "==Compile fib into riscv with zkgo"
+#if [ -f "$FIB_RISCV" ]; then
+#    echo -e "==$FIB_RISCV exists. \n"
+#else
+#  echo $GOROOT
+#  cd $GOROOT
+   # NOTE: MEET ERROR: zkgo_examples/fib/fib_zkgo.go:5:6: missing function body
+#  GOOS=linux GOARCH=riscv64 $ZKGO build -gcflags=all=-d=softfloat -o $FIB_RISCV $FIB_PATH
+#  echo -e "compiled \n"
+#fi
+
 
 echo "Finish build_zkgo"
