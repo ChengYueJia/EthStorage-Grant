@@ -38,6 +38,7 @@ else
 fi
 
 
+
 # 2. run RAW_FIB_WASM
 echo -e "\n==run RAW_FIB_WASM"
 cd $RAW_FIB_WASM

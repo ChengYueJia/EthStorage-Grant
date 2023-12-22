@@ -4,10 +4,10 @@
 
 ## Profiler Features
 * dry_run
-  execute 'fib.wasm' by the inner`wasmi runtime`
+  execute 'fib.wasm' by the inner`wasmi runtime`.
 
 * gen_witness
-  generate the witness with`fib.wasm`
+  generate the witness with`fib.wasm`.
 
 * gen_proof
   generate the proof
@@ -20,12 +20,12 @@
 |----------------------|---------|-------------|-----------|
 | zkWasm(CPU)          | 1.301   | -           | -         |             
 | zkWasm(GPU)          | 1.231   | -           | -         | 
-| rics0(zkgo/wasm)     | -       | -           | -         | 
+| rics0(zkgo/wasm)     | 616     | -           | -         | 
 | rics0(zkgo/wasm) GPU | -       | -           | -         | 
 | rics0(raw_wasm)      | 0.069   | -           | 112.329   |             
 | rics0(raw_wasm) GPU  | -       | -           | 16.808    |
-| rics0(riscv)         |         |             | -         |             
-| rics0(riscv) GPU     | -       | -           | -         | 
+| rics0(riscv)         | 0.38    |             | 8.370     |             
+| rics0(riscv) GPU     | -       | -           | 1.395     | 
 
 
 
