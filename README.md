@@ -94,9 +94,9 @@ make pull
 ```
 
 * profile rics0
+Include `raw_fib_wasm`, `zkgo_fig_wasm`, `raw_fib_risc`: 
 ```bash
-# TODO
-
+./build_risc0.sh
 ```
 
 
