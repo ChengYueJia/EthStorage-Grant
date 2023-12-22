@@ -14,7 +14,23 @@
 
 ### timing profile
 
+* N=100
+> mac 16G i7 2.5 GHz
+
+| Time(s)              | dry_run | gen_witness | gen_proof | 
+|----------------------|---------|-------------|-----------|
+| zkWasm(CPU)          | 6.569   | -           | -         |             
+| zkWasm(GPU)          | -       | -           | -         | 
+| rics0(zkgo/wasm)     | -       | -           | -         | 
+| rics0(zkgo/wasm) GPU | -       | -           | -         | 
+| rics0(raw_wasm)      | -       | -           | 460.372   |             
+| rics0(raw_wasm) GPU  | -       | -           | -         |
+| rics0(riscv)         | -       |             | 65.591    |             
+| rics0(riscv) GPU     | -       | -           | -         | 
+
+
 * N=1000
+> Linux 2T 64/core 
 
 | Time(s)              | dry_run | gen_witness | gen_proof | 
 |----------------------|---------|-------------|-----------|
@@ -26,24 +42,6 @@
 | rics0(raw_wasm) GPU  | -       | -           | 16.808    |
 | rics0(riscv)         | 0.38    |             | 8.370     |             
 | rics0(riscv) GPU     | -       | -           | 1.395     | 
-
-
-
-
-
-
-* N=10000
-
-| Time(s)              | dry_run | gen_witness | gen_proof | 
-|----------------------|---------|-------------|-----------|
-| zkWasm(CPU)          | -       | -           | -         |             
-| zkWasm(GPU)          | -       | -           | -         | 
-| rics0(zkgo/wasm)     | -       | -           | -         | 
-| rics0(zkgo/wasm) GPU | -       | -           | -         | 
-| rics0(raw_wasm)      | -       | -           | -         |                 
-| rics0(raw_wasm) GPU  | -       | -           | -         |    
-| rics0(riscv)         |         |             | -         |             
-| rics0(riscv) GPU     | -       | -           | -         | 
 
 
 * N=100000

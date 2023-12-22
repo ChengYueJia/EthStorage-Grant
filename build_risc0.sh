@@ -59,20 +59,20 @@ fi
 
 
 
-## zkgo_fib_wasm
-#cd $ZKWASM
-## 3. build and run
-#echo -e "\n==run zkgo_fib_wasm_cuda"
-#time RUST_LOG=info cargo run --release -- -w $ZKGO_FIB_WASM
-#
-## check cuda
-#echo -e "\n==build zkgo_fib_wasm"
-#if command -v nvcc >/dev/null 2>&1; then
-#    echo "nvcc installed"
-#    time RUST_LOG=info cargo run --release --features cuda -- -w $ZKGO_FIB_WASM
-#else
-#    echo "nvcc not installed"
-#fi
+# zkgo_fib_wasm
+cd $ZKWASM
+# 3. build and run
+echo -e "\n==run zkgo_fib_wasm_cuda"
+time RUST_LOG=info cargo run --release -- -w $ZKGO_FIB_WASM
+
+# check cuda
+echo -e "\n==build zkgo_fib_wasm"
+if command -v nvcc >/dev/null 2>&1; then
+    echo "nvcc installed"
+    time RUST_LOG=info cargo run --release --features cuda -- -w $ZKGO_FIB_WASM
+else
+    echo "nvcc not installed"
+fi
 
 
 
