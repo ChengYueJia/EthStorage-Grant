@@ -1,0 +1,18 @@
+==build zkwasm
+==/home/clouder05/Public/EthStorage-Grant/bin/delphinus-cli exists.
+
+==zkwasm dry_run
+
+real    0m1.343s
+user    0m1.130s
+sys     0m0.213s
+
+
+==zkwasm dry_run_cuda
+nvcc installed
+
+real    0m1.415s
+user    0m1.198s
+sys     0m0.217s
+
+==Finish build_zkwasm

@@ -1,0 +1,55 @@
+nohup: ignoring input
+Already on 'feat/eths-grant-1'
+M	examples/fibonacci/src/main.rs
+M	examples/wasm/src/main.rs
+M	examples/zkgo_wasm/src/main.rs
+M	risc0/zkvm/src/host/server/prove/prover_impl.rs
+Your branch is up to date with 'origin/feat/eths-grant-1'.
+Already up to date.
+
+==install risc0 toolchain
+Already install risczero toolchain
+risc0	/home/clouder05/.local/share/cargo-risczero/toolchains/x86_64-unknown-linux-gnu_test-release-2/rust
+
+==run RAW_FIB_WASM
+
+===run raw_fib_wasm
+
+real	0m0.432s
+user	0m0.253s
+sys	0m0.127s
+
+===build raw_fib_wasm_cuda
+nvcc installed
+
+real	0m0.464s
+user	0m0.255s
+sys	0m0.149s
+
+==run zkgo_fib_wasm_cuda
+
+real	0m0.407s
+user	0m0.226s
+sys	0m0.152s
+
+==build zkgo_fib_wasm
+nvcc installed
+
+real	0m0.424s
+user	0m0.251s
+sys	0m0.165s
+
+ run RAW_FIB_RISCV
+
+==run raw_fib_risc
+
+real	0m0.396s
+user	0m0.243s
+sys	0m0.129s
+
+==build raw_fib_risc_cuda
+nvcc installed
+
+real	0m0.405s
+user	0m0.261s
+sys	0m0.124s

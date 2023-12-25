@@ -15,22 +15,22 @@
 ### timing profile
 
 * N=100
-> mac 16G i7 2.5 GHz
+> OS: Linux  DISK: 2T   Mem: 512G	AMD EPYC 7532 32-Core Processor  64Core	GPU: 3090
 
 | Time(s)              | dry_run | gen_witness | gen_proof | 
 |----------------------|---------|-------------|-----------|
-| zkWasm(CPU)          | 6.569   | -           | -         |             
-| zkWasm(GPU)          | -       | -           | -         | 
-| rics0(zkgo/wasm)     | -       | -           | -         | 
-| rics0(zkgo/wasm) GPU | -       | -           | -         | 
-| rics0(raw_wasm)      | -       | -           | 460.372   |             
-| rics0(raw_wasm) GPU  | -       | -           | -         |
-| rics0(riscv)         | -       |             | 65.591    |             
-| rics0(riscv) GPU     | -       | -           | -         | 
+| zkWasm(CPU)          | 1.343   | -           | -         |             
+| zkWasm(GPU)          | 1.415   | -           | -         | 
+| rics0(zkgo/wasm)     | -       | -           | 0.407     | 
+| rics0(zkgo/wasm) GPU | -       | -           | 0.424     | 
+| rics0(raw_wasm)      | -       | -           | 0.432     |             
+| rics0(raw_wasm) GPU  | -       | -           | 0.464     |
+| rics0(riscv)         | -       |             | 0.396     |             
+| rics0(riscv) GPU     | -       | -           | 0.405     | 
 
 
 * N=1000
-> Linux 2T 64/core 
+> OS: Linux  DISK: 2T   Mem: 512G	AMD EPYC 7532 32-Core Processor  64Core	GPU: 3090
 
 | Time(s)              | dry_run | gen_witness | gen_proof | 
 |----------------------|---------|-------------|-----------|
