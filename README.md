@@ -67,17 +67,22 @@
 ## Structure
 
 ### bin
-All the binary file will gather here:
+All the binary file will gather:
 1. zkgo
 2. zkwasm_cli
 3. risc0
 
 ### data
-All the generated data will be store here:
+All the generated data will be store in `data`:
 1. fib_go.wasm
 
 
 ## How to run:
+* prepare
+```bash
+make prepare
+```
+
 * pull submodule
 ```bash
 make pull

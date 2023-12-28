@@ -21,5 +21,6 @@ data/*
 go/*
 risc0/*
 zkWasm/*
+zkLLVM/*
 
-
+.DS_Store
