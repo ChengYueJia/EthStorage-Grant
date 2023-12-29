@@ -34,7 +34,7 @@ cd $EXAMPLES
 
 
 cd $RUST_EXAMPLES
-cargo run --release --examples sha2_256 -- --nocapture
+cargo run --release --example sha2_256 -- --nocapture
 
 
 
