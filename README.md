@@ -42,7 +42,6 @@
 | rics0(raw_wasm) GPU  | -       | -           |           | 16.808       |
 | rics0(riscv)         | 0.38    |             |           | 8.370        |            
 | rics0(riscv) GPU     | -       | -           |           | 1.395        |
-ii8
 
 
 * N=100000
