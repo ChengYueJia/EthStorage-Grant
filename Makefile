@@ -17,6 +17,7 @@ prepare: ## libs and tools on ubuntu
 	@sudo apt install libssl-dev
 	@sudo apt install pkg-config
 	@sudo apt install build-essential cmake clang-12 git curl pkg-config  libssl-dev
+	@rustup default 1.73.0
 
 
 path: ## Export bin to env path.
