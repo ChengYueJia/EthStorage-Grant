@@ -11,3 +11,7 @@
 	url = https://github.com/ChengYueJia/go.git
 	branch = feat/eths-grant-1
 
+[submodule "zkLLVM"]
+	path = zkLLVM
+	url = https://github.com/ChengYueJia/zkLLVM.git
+	branch = feat/eths-grant-1
