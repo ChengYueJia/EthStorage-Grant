@@ -1,102 +1,86 @@
 # EthStorage-Grant
+Metrics specification:
+- Risc0: Risc0 instructions typically consist of 1-2 cycles each. The `total cycles` logged in the stdout might be misleading as it refers to `segment_cycles`, which actually measures the entirety of cycles in the guest program's execution trace. It's worth noting that segment_cycles needs adjustment by **subtracting 1<<20**, as Risc0's default implementation inadvertently adds an extra segment.
+- zkWasm: Cycles are measured by total wasm instructions.
 
+## timing profile
+> zkWasm OS: Mem: 512G	 AMD Ryzen Threadripper PRO 5975WX 32-Cores, GPU: 4090*2, Cuda 12.2
+> Risc0  OS: Mem: 128G	 AMD Ryzen 9 7950X 16-Core Processor,	GPU: 4090, Cuda 12.2
 
+* N=900
 
-## Profiler Features
-* dry_run
-  execute 'fib.wasm' by the inner`wasmi runtime`.
+| Metrics              | cycles           | dry_run(s) | gen_witness(s) | gen_proof(s) | e2e(s)       | 
+|----------------------|------------------|------------|----------------|--------------|--------------|
+| zkWasm(raw_wasm) CPU | 369891           | -          | -              | 362          |              | 
+| zkWasm(raw_wasm) GPU | Same as above    | -          | -              | 31.3         | -            | 
+| zkWasm(zkgo/wasm) CPU| >> 1M            | pending    | -              | -            | -            | 
+| zkWasm(zkgo/wasm) GPU| Same as above    | pending    | -              | -            | -            | 
+| rics0(raw_wasm)      | 24867989         | -          | -              | -            |              | 
+| rics0(raw_wasm) GPU  | Same as above    | -          | -              |              |              |
+| rics0(riscv)         | 236397           | -          |                | 22.0         |              | 
+| rics0(riscv) GPU     | Same as above    | -          | -              | 6.0          |              | 
+| rics0(zkgo/wasm)     | >> 1M            | time out   | -              |              |              | 
+| rics0(zkgo/wasm) GPU | Same as above    | time out   | -              |              |              | 
+| rics0(zkgo/riscv)    | Unsupported      | -          | -              |              |              | 
+| rics0(zkgo/riscv) GPU| Same as above    | -          | -              |              |              | 
 
-* gen_witness
-  generate the witness with`fib.wasm`.
+* N=1800
 
-* gen_proof
-  generate the proof
-
-### timing profile
-
-* N=100
-> OS: Linux  DISK: 2T   Mem: 512G	AMD EPYC 7532 32-Core Processor  64Core	GPU: 3090
-
-| Time(s)              | dry_run | gen_witness | gen_proof | 
-|----------------------|---------|-------------|-----------|
-| zkWasm(CPU)          | 1.343   | -           | -         |             
-| zkWasm(GPU)          | 1.415   | -           | -         | 
-| rics0(zkgo/wasm)     | -       | -           | 0.407     | 
-| rics0(zkgo/wasm) GPU | -       | -           | 0.424     | 
-| rics0(raw_wasm)      | -       | -           | 0.432     |             
-| rics0(raw_wasm) GPU  | -       | -           | 0.464     |
-| rics0(riscv)         | -       |             | 0.396     |             
-| rics0(riscv) GPU     | -       | -           | 0.405     | 
-
-
-* N=1000
-> OS: Linux  DISK: 2T   Mem: 512G	AMD EPYC 7532 32-Core Processor  64Core	GPU: 3090
-
-| Time(s)              | dry_run | gen_witness | gen_proof | 
-|----------------------|---------|-------------|-----------|
-| zkWasm(CPU)          | 1.301   | -           | -         |             
-| zkWasm(GPU)          | 1.231   | -           | -         | 
-| rics0(zkgo/wasm)     | 616     | -           | -         | 
-| rics0(zkgo/wasm) GPU | -       | -           | -         | 
-| rics0(raw_wasm)      | 0.069   | -           | 112.329   |             
-| rics0(raw_wasm) GPU  | -       | -           | 16.808    |
-| rics0(riscv)         | 0.38    |             | 8.370     |             
-| rics0(riscv) GPU     | -       | -           | 1.395     | 
-
-
-* N=100000
-
-| Time(s)              | dry_run | gen_witness | gen_proof | 
-|----------------------|---------|-------------|-----------|
-| zkWasm(CPU)          | 1.378   | -           | -         |             
-| zkWasm(GPU)          | 1.257   | -           | -         | 
-| rics0(zkgo/wasm)     | -       | -           | -         | 
-| rics0(zkgo/wasm) GPU | -       | -           | -         | 
-| rics0(raw_wasm)      | -       | -           | -         |             
-| rics0(raw_wasm) GPU  | -       | -           | -         |
-| rics0(riscv)         |         |             | -         |             
-| rics0(riscv) GPU     | -       | -           | -         | 
-
-
-
-### generate `fib.risc` by zkGo
-> TODO
-
-
+| Metrics              | cycles           | dry_run(s) | gen_witness(s) | gen_proof(s) | e2e(s)       | 
+|----------------------|------------------|------------|----------------|--------------|--------------|
+| zkWasm(raw_wasm) CPU | 1019334          | -          | -              | >> 60        |              | 
+| zkWasm(raw_wasm) GPU | Same as above    | -          | -              | 38.2         | -            | 
+| zkWasm(zkgo/wasm) CPU| >> 1M            | pending    | -              | -            | -            | 
+| zkWasm(zkgo/wasm) GPU| Same as above    | pending    | -              | -            | -            | 
+| rics0(raw_wasm)      | 24867989         | -          | -              | _            |              | 
+| rics0(raw_wasm) GPU  | Same as above    | -          | -              |              |              |
+| rics0(riscv)         | 681145           | -          |                | 80.7         |              | 
+| rics0(riscv) GPU     | Same as above    | -          | -              | 12.0         |              | 
+| rics0(zkgo/wasm)     | >> 1M            | time out   | -              |              |              | 
+| rics0(zkgo/wasm) GPU | Same as above    | time out   | -              |              |              | 
+| rics0(zkgo/riscv)    | Unsupported      | -          | -              |              |              | 
+| rics0(zkgo/riscv) GPU| Same as above    | -          | -              |              |              | 
 
 ## Structure
 
 ### bin
-All the binary file will gather here:
-1. zkgo
-2. zkwasm_cli
-3. risc0
+All the binary file (cli tools and generated wasm files) will gather here in `./bin` directory.
 
 ### data
-All the generated data will be store here:
-1. fib_go.wasm
+All the generated benchmark cases are store in the `./data` directory.
 
 
 ## How to run:
-* pull submodule
+* prepare enviroment and pull submodule
 ```bash
+make prepare
 make pull
 ```
+> change FIB_N in the following bash files to change benchmark's number of instructions
 
-* gen fib.wasm by zkgo
+* profile fib_rs in zkWasm 
 ```bash
-./build_zkgo.sh
+bash scripts/zkwasm_fibrs.sh
 ```
 
-* profile zkwasm
+* profile fib_zkgo in zkWasm 
 ```bash
-./build_zkwasm.sh
+bash scripts/zkwasm_fibgo.sh
 ```
 
-* profile rics0
-Include `raw_fib_wasm`, `zkgo_fig_wasm`, `raw_fib_risc`: 
+* profile fib_rs compiled to riscv in Risc0 
 ```bash
-./build_risc0.sh
+bash scripts/risc0_fibrs_riscv.sh
+```
+
+* profile fib_rs compiled to wasm, then interpreted with wasmi, then compiled to riscv in Risc0 
+```bash
+bash scripts/risc0_fibrs_wasmi2riscv.sh
+```
+
+* profile fib_go compiled to wasm, then interpreted with wasmi, then compiled to riscv in Risc0 
+```bash
+bash scripts/risc0_fibgo_wasmi2riscv
 ```
 
 

@@ -23,3 +23,12 @@ risc0/*
 zkWasm/*
 
 
+
+
+# Added by cargo
+
+/target
+*.json
+output/*
+bin/*
+go/bin/*

@@ -16,6 +16,10 @@ clean_bin: ## clean the cached bin
 prepare: ## libs and tools on ubuntu
 	@sudo apt install libssl-dev
 	@sudo apt install pkg-config
+	@curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sudo sh
+	@cargo install cargo-binstall
+	@cargo binstall cargo-risczero
+	@cargo risczero install
 
 
 path: ## Export bin to env path.

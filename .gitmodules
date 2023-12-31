@@ -1,13 +1,13 @@
 [submodule "zkWasm"]
 	path = zkWasm
-	url = https://github.com/ChengYueJia/zkWasm.git
-	branch = feat/eths-grant-1
+	url = https://github.com/DelphinusLab/zkWasm.git
+	branch = merge-dry-run
 [submodule "risc0"]
 	path = risc0
-	url = https://github.com/ChengYueJia/risc0.git
-	branch = feat/eths-grant-1
+	url = https://github.com/apuslabs/risc0.git
+	branch = v0.19.1
 [submodule "go"]
 	path = go
-	url = https://github.com/ChengYueJia/go.git
-	branch = feat/eths-grant-1
+	url = https://github.com/ethstorage/go.git
+	branch = zkGo
 
