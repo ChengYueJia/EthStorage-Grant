@@ -1,0 +1,70 @@
+M	examples/fibonacci/src/main.rs
+M	examples/wasm/src/main.rs
+M	examples/zkgo_wasm/src/main.rs
+Your branch is up to date with 'origin/feat/eths-grant-1'.
+Already up to date.
+
+
+==install risc0 toolchain
+Already install risczero toolchain
+risc0	/home/clouder05/.local/share/cargo-risczero/toolchains/x86_64-unknown-linux-gnu_test-release-2/rust
+
+
+
+
+==run RAW_FIB_WASM
+==run raw_fib_wasm
+Start:   prove_elf
+[2023-12-22T05:56:09Z INFO  executor] total_cycles = 660355
+[2023-12-22T05:56:09Z INFO  executor] session_cycles = 1683980
+[2023-12-22T05:56:09Z INFO  executor] segment_count = 1
+[2023-12-22T05:56:09Z INFO  executor] execution_time = 68.741351ms
+[2023-12-22T05:56:09Z INFO  risc0_zkvm::host::server::prove::prover_impl] prove_session: cpu
+R0VM[625461] fib 1000 - 1556111435
+End:     prove_elf .................................................................112.833s
+
+real    2m44.178s
+user    93m0.362s
+sys     1m8.318s
+
+
+
+==build raw_fib_wasm_cuda
+nvcc installed
+Start:   prove_elf
+R0VM[625461] fib 1000 - 1556111435End:     prove_elf .................................................................16.159s
+
+real    7m23.666s
+user    24m48.589s
+sys     2m8.426s
+
+
+
+
+==run raw_fib_risc
+Start:   prove_elf
+[2023-12-22T06:27:51Z INFO  executor] total_cycles = 49802
+[2023-12-22T06:27:51Z INFO  executor] session_cycles = 1087649
+[2023-12-22T06:27:51Z INFO  executor] segment_count = 1
+[2023-12-22T06:27:51Z INFO  executor] execution_time = 38.217026ms
+[2023-12-22T06:27:51Z INFO  risc0_zkvm::host::server::prove::prover_impl] prove_session: cpu
+End:     prove_elf .................................................................8.370s
+I know the factors of 9079565065540428013, and I can prove it!
+
+
+==run raw_fib_risc_cuda
+Start:   prove_elf
+End:     prove_elf .................................................................1.395s
+I know the factors of 9079565065540428013, and I can prove it!
+
+
+
+==run fib_zkgo_wasm
+Start:   fibonacci_zkgo_wasm
+load file from /home/clouder05/Public/EthStorage-Grant/data/fib_with_input.wasm
+··Start:   prove_elf
+[2023-12-22T06:44:49Z INFO  executor] total_cycles = 533756
+[2023-12-22T06:44:49Z INFO  executor] session_cycles = 1980096671
+[2023-12-22T06:44:49Z INFO  executor] segment_count = 1888
+[2023-12-22T06:44:49Z INFO  executor] execution_time = 616.373125704s
+[2023-12-22T06:44:49Z INFO  risc0_zkvm::host::server::prove::prover_impl] prove_session: cpu

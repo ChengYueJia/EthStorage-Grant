@@ -1,0 +1,14 @@
+==build zkwasm
+==/Users/paul/zkp/EthStorage-Grant/bin/delphinus-cli does not exist.
+nvcc not installed
+
+==zkwasm dry_run
+
+==zkwasm dry_run_cuda
+nvcc not installed
+
+==Finish build_zkwasm
+
+real    0m6.569s
+user    0m2.189s
+sys     0m0.200s

@@ -1,0 +1,42 @@
+M	bonsai/ethereum/lib/openzeppelin-contracts
+M	bonsai/ethereum/lib/solidity-bytes-utils
+M	examples/fibonacci/src/main.rs
+M	examples/wasm/src/main.rs
+M	examples/zkgo_wasm/src/main.rs
+您的分支与上游分支 'origin/feat/eths-grant-1' 一致。
+已经是最新的。
+
+==install risc0 toolchain
+Already install risczero toolchain
+risc0	/Users/paul/Library/Application Support/cargo-risczero/toolchains/x86_64-apple-darwin_test-release-2/rust
+
+==run RAW_FIB_WASM
+
+===run raw_fib_wasm
+Start:   fibonacci_raw_wasm
+··Start:   prove_elf
+R0VM[394918] fib 100 - -980107325··End:     prove_elf ...............................................................460.372s
+End:     fibonacci_raw_wasm ........................................................460.450s
+
+===build raw_fib_wasm_cuda
+nvcc not installed
+
+==run zkgo_fib_wasm_cuda
+Start:   fibonacci_zkgo_wasm
+load file from /Users/paul/zkp/EthStorage-Grant/data/fib_with_input.wasm
+··Start:   prove_elf
+
+==build zkgo_fib_wasm
+nvcc not installed
+
+ run RAW_FIB_RISCV
+
+==run raw_fib_risc
+Start:   fibonacci_riscv
+··Start:   prove_elf
+··End:     prove_elf ...............................................................65.532s
+I know the factors of 1298777728820984005, and I can prove it!
+End:     fibonacci_riscv ...........................................................65.591s
+
+==build raw_fib_risc_cuda
+nvcc not installed
